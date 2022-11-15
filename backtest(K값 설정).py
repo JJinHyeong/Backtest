@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 from pandas_datareader import data as pdr
 import pandas as pd
 import yfinance as yf
@@ -16,22 +10,8 @@ import seaborn as sns
 import matplotlib
 from matplotlib import font_manager, rc
 import platform
-try : 
-    if platform.system() == 'Windows':
-    # 윈도우인 경우
-        font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
-        rc('font', family=font_name)
-    else:    
-    # Mac 인 경우
-        rc('font', family='AppleGothic')
-except : 
-    pass
-matplotlib.rcParams['axes.unicode_minus'] = False   
 
-
-# In[2]:
-
-
+#그래프를 그리는 함수
 def lineplot(df,title=""):
         plt.figure(figsize=(10,8))
         plt.title(title)
@@ -56,11 +36,8 @@ def lineplot(df,title=""):
         df.경우의수.plot.bar()
         plt.legend()
         #plt.title("경우의수")
-
-
-# In[6]:
-
-
+        
+#백테스트 함수
 def backtest(code, start='2021-01-01'):
     code = str(code)+".KS"
 
@@ -109,36 +86,20 @@ def backtest(code, start='2021-01-01'):
 
     return df
 
-
-# In[8]:
-
-
+#삼성전자
 df = backtest("005930",start='2021-01-01')
 df
 print("누적수익률 : {:.2f}(k=0.5)".format(df.loc[0.5,'누적수익률']))
 print("누적수익률 : {:.2f}(k=1.0)".format(df.loc[1,'누적수익률']))
 
-
-# In[12]:
-
-
+#네이버
 df = backtest("035420",start='2021-01-01')
 df
 print("누적수익률 : {:.2f}(k=0.5)".format(df.loc[0.5,'누적수익률']))
 print("누적수익률 : {:.2f}(k=1.0)".format(df.loc[1,'누적수익률']))
 
-
-# In[13]:
-
-
+#
 df = backtest("035720",start='2021-01-01')
 df
 print("누적수익률 : {:.2f}(k=0.5)".format(df.loc[0.5,'누적수익률']))
 print("누적수익률 : {:.2f}(k=1.0)".format(df.loc[1,'누적수익률']))
-
-
-# In[ ]:
-
-
-
-
