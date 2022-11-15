@@ -1,37 +1,10 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[40]:
-
-
 from pandas_datareader import data as pdr
 import pandas as pd
 import yfinance as yf
-import matplotlib.pyplot as plt
 import numpy as np
 import time
-from pykrx import stock
-import seaborn as sns
 
-import matplotlib
-from matplotlib import font_manager, rc
-import platform
-try : 
-    if platform.system() == 'Windows':
-    # 윈도우인 경우
-        font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
-        rc('font', family=font_name)
-    else:    
-    # Mac 인 경우
-        rc('font', family='AppleGothic')
-except : 
-    pass
-   
-
-
-# In[42]:
-
-
+#백테스트 함수
 def backtest(code, k, start='2021-01-01'):
     code = str(code)+".KS"
     df=pd.DataFrame()
@@ -76,11 +49,3 @@ codes = ['005930','005380','035420','035720','000270']
 for code in codes:
     df = backtest(code,k=0.5,start='2021-01-01')
     time.sleep(1)
-    
-
-
-# In[ ]:
-
-
-
-
